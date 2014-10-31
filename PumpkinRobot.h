@@ -11,10 +11,21 @@ enum RobotState {
 	SLEEPING
 };
 
+enum LED {
+  LEFT_WING,
+  RIGHT_WING,
+  LEFT_EYE,
+  RIGHT_EYE,
+  COUNT
+}
+
 class PumpkinRobot {
 public:
+  // Attachments
 	Servo left_wing_;
 	Servo right_wing_;
+  int *led_state_;
+  int *pin_;
 	
 	int left_wing_angle_;
 	int right_wing_angle_;
@@ -30,6 +41,7 @@ public:
 	RobotState robot_state_;
 	
 	PumpkinRobot(int left_wing=3, int right_wing=5);
+  ~PumpkinRobot();
   void step();
 
 private:

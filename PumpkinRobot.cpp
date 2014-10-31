@@ -12,6 +12,9 @@ PumpkinRobot::PumpkinRobot(int left_wing, int right_wing) :
 	right_wing_angle_(90),
 	robot_state_(SLEEPING)
 {
+  led_state_ = new int[COUNT];
+  pin_  new int[COUNT];
+  
 	// The servo pin for the wings are configurable through the left wing
 	// and right wing angle parameters
 	left_wing_.attach(left_wing);
@@ -33,4 +36,12 @@ void PumpkinRobot::step()
   // Get potentiometer value: [0,1023]
   left_wing_speed_ = right_wing_speed_ = map(scarometer_, 0, 100, 0, 1024);
   left_blink_freq_ = right_blink_freq_ = map(scarometer_, min_blink_freq_, max_blink_freq_, 0, 1024);
+}
+
+PumpkinRobot::~PumpkinRobot()
+{
+  if(led_state_ != NULL)
+    delete[] led_state_;
+  if(pin_number_ != NULL)
+    delete[] pin_number_;
 }
