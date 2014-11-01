@@ -4,8 +4,8 @@
 PumpkinRobot::PumpkinRobot() :
 	min_wing_speed_(0),
 	max_wing_speed_(2),
-	min_wing_angle_(45),
-	max_wing_angle_(900),
+	min_wing_angle_(80),
+	max_wing_angle_(180),
 	left_wing_speed_(0.0),
 	right_wing_speed_(0.0),
 	left_wing_angle_(min_wing_angle_),
@@ -37,7 +37,6 @@ PumpkinRobot::PumpkinRobot() :
 void PumpkinRobot::reconfigureRobot()
 {
   // Set everything to run smoothly
-  // Calculate next step of wing
   left_wing_.write(left_wing_angle_);
   right_wing_.write(right_wing_angle_);
   
